@@ -774,21 +774,14 @@ public class FalconPathPlanner
 			//Right Alliance Station Wall
 			{fieldLength, 0},
 			{fieldLength, fieldHeight},
-			
-			//Red Boiler
-			//Blue Alliance Loading Station
-			//Blue Boiler
-			//RedAlliance Loading Station
-			
-			
-			
 		};
-		/*
+		
 		//Red Alliance Boiler Line
 		double[][] FieldBorder2 = new double[][] {
 			{0, 4.42},
 			{4.42, 0}
 		};
+		
 		//Blue Alliance Loading Station Line
 		double[][] FieldBorder3 = new double[][] {
 			{0, fieldHeight - 10.292},
@@ -820,7 +813,7 @@ public class FalconPathPlanner
 			
 		};
 	
-		*/
+		
 		//Baseline 
 		double BaseLineDelta = 7.771;
 		double[][] BaseLine1 = new double[][]{
@@ -857,7 +850,7 @@ public class FalconPathPlanner
 		double[][] PlasticBarrier4 = new double[][]{
 			//Top Right Barrier
 			{BaseLineDelta + 12.363, fieldHeight/2 + 3.001},
-			{BaseLineDelta + 11.598, fieldHeight/2 + 2.804}
+			{BaseLineDelta + 11.599, fieldHeight/2 + 2.804}
 		};
 		double[][] PlasticBarrier5 = new double[][]{
 			//Bottom Center Barrier
@@ -890,7 +883,7 @@ public class FalconPathPlanner
 		double[][] PlasticBarrier10 = new double[][]{
 			//Top Right Barrier
 			{fieldLength - BaseLineDelta - 12.363, fieldHeight/2 + 3.001},
-			{fieldLength - BaseLineDelta - 11.598, fieldHeight/2 + 2.804}
+			{fieldLength - BaseLineDelta - 11.599, fieldHeight/2 + 2.804}
 		};
 		double[][] PlasticBarrier11 = new double[][]{
 			//Bottom Center Barrier
@@ -903,7 +896,7 @@ public class FalconPathPlanner
 			{fieldLength - BaseLineDelta - 11.598, fieldHeight/2 - 2.804}
 		};
 		
-		//AirShips
+		//AirShips(Red Alliance)
 		double[][] AirShip1 = new double[][]{
 			{BaseLineDelta + 11.598, fieldHeight/2 + 0.917},
 			{BaseLineDelta + 11.598, fieldHeight/2 + 2.804},
@@ -916,12 +909,14 @@ public class FalconPathPlanner
 			
 			
 		};
+		
+		//Airships(Blue Alliance)
 		double[][] AirShip2 = new double[][]{
 			{fieldLength - BaseLineDelta - 12.363, fieldHeight/2 + 0.917},
 			{fieldLength - BaseLineDelta - 11.598, fieldHeight/2 + 2.804},
 			{fieldLength - BaseLineDelta - 6.181, fieldHeight/2 + 4.221},
-			{fieldLength - BaseLineDelta - 0.765, fieldHeight/2 + 2.804},
-			{fieldLength - BaseLineDelta - 0.765, fieldHeight/2 - 2.804},
+			{fieldLength - BaseLineDelta - 1.9, fieldHeight/2 + 2.804},
+			{fieldLength - BaseLineDelta - 1.9, fieldHeight/2 - 2.804},
 			{fieldLength - BaseLineDelta - 6.181, fieldHeight/2 - 4.221},
 			{fieldLength - BaseLineDelta - 11.598, fieldHeight/2 - 2.804},
 			{fieldLength - BaseLineDelta - 12.363, fieldHeight/2 - 0.917},
@@ -942,11 +937,11 @@ public class FalconPathPlanner
 			
 		};
 
-		fig3.addData(FieldBorder1, Color.black);/*
+		fig3.addData(FieldBorder1, Color.black);
 		fig3.addData(FieldBorder2, Color.black);
 		fig3.addData(FieldBorder3, Color.black);
 		fig3.addData(FieldBorder4, Color.black);
-		fig3.addData(FieldBorder5, Color.black);
+		fig3.addData(FieldBorder5, Color.black);/*
 		fig3.addData(KeyLine, Color.black);
 		fig3.addData(RetrievalZone, Color.black);*/
 		fig3.addData(BaseLine1, Color.red);
