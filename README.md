@@ -401,3 +401,12 @@ Assumptions
 2. Ground robot is to travel on is considered to be an even plane, with no hills, ramps, bumbs, or other obstacles
 3. Robot has independant speed controllers for both sides of the Robot Chassis, tuned to meet the velocity profile changes
 4. Sufficient time is given for the robot to complete the path. 
+
+Credit
+=======================
+1. I did not create this software.
+2. This repository only serves as local storage for our team to be able to access an modify this open source code.
+3. I nor any of our team takes any credit for this work; all credit is to go to https://github.com/KHEngineering/SmoothPathPlanner.
+4. We are very thankful that the previously mentioned group has allowed public access to this code; and all this repository serves to do
+is to allow us to modify this code for the varying autonomous requirements from year to year.
+5. Happy coding! Keep in open source everyone. It's better this way.
