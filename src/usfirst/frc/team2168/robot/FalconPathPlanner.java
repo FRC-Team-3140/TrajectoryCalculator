@@ -833,67 +833,67 @@ public class FalconPathPlanner
 		double[][] PlasticBarrier1 = new double[][]{
 			//Left Most Top Barrier
 			{BaseLineDelta, fieldHeight/2 + 3.001},
-			{BaseLineDelta + 0.765, fieldHeight/2 + 2.804}
+			{9.53, fieldHeight/2 + 2.804}
 			
 		};
 		double[][] PlasticBarrier2 = new double[][]{
 			//Left Most Bottom Barrier
 			{BaseLineDelta, fieldHeight/2 - 3.001},
-			{BaseLineDelta + 0.765, fieldHeight/2 - 2.804}
+			{9.53, fieldHeight/2 - 2.804}
 			
 		};
 		double[][] PlasticBarrier3 = new double[][]{
 			//Top Center Barrier
 			{BaseLineDelta + 6.181, fieldHeight/2 + 4.985},
-			{BaseLineDelta + 6.181, fieldHeight/2 + 4.221}
+			{13.1, fieldHeight/2 + 4.221}
 		};
 		double[][] PlasticBarrier4 = new double[][]{
 			//Top Right Barrier
 			{BaseLineDelta + 12.363, fieldHeight/2 + 3.001},
-			{BaseLineDelta + 11.599, fieldHeight/2 + 2.804}
+			{16.7, fieldHeight/2 + 2.804}
 		};
 		double[][] PlasticBarrier5 = new double[][]{
 			//Bottom Center Barrier
 			{BaseLineDelta + 6.181, fieldHeight/2 - 4.985},
-			{BaseLineDelta + 6.181, fieldHeight/2 - 4.221}
+			{13.1, fieldHeight/2 - 4.221}
 		};
 		double[][] PlasticBarrier6 = new double[][]{
 			//Bottom Right Barrier
 			{BaseLineDelta + 12.363, fieldHeight/2 - 3.001},
-			{BaseLineDelta + 11.598, fieldHeight/2 - 2.804}
+			{16.7, fieldHeight/2 - 2.804}
 		};
 		//Blue Alliance Station
 		double[][] PlasticBarrier7 = new double[][]{
-			//Left Most Top Barrier
+			//Right Most Top Barrier
 			{fieldLength - BaseLineDelta, fieldHeight/2 + 3.001},
-			{fieldLength - BaseLineDelta - 0.765, fieldHeight/2 + 2.804}
+			{fieldLength - 9.53,fieldHeight/2 + 2.804}
 			
 		};
 		double[][] PlasticBarrier8 = new double[][]{
-			//Left Most Bottom Barrier
+			//Right Most Bottom Barrier
 			{fieldLength - BaseLineDelta, fieldHeight/2 - 3.001},
-			{fieldLength - BaseLineDelta - 0.765, fieldHeight/2 - 2.804}
+			{fieldLength - 9.53, fieldHeight/2 - 2.804}
 			
 		};
 		double[][] PlasticBarrier9 = new double[][]{
 			//Top Center Barrier
 			{fieldLength - BaseLineDelta - 6.181, fieldHeight/2 + 4.985},
-			{fieldLength - BaseLineDelta - 6.181, fieldHeight/2 + 4.221}
+			{37, fieldHeight/2 + 4.221}
 		};
 		double[][] PlasticBarrier10 = new double[][]{
-			//Top Right Barrier
+			//Top Left Barrier
 			{fieldLength - BaseLineDelta - 12.363, fieldHeight/2 + 3.001},
-			{fieldLength - BaseLineDelta - 11.599, fieldHeight/2 + 2.804}
+			{33.74, fieldHeight/2 + 2.804}
 		};
 		double[][] PlasticBarrier11 = new double[][]{
 			//Bottom Center Barrier
 			{fieldLength - BaseLineDelta - 6.181, fieldHeight/2 - 4.985},
-			{fieldLength - BaseLineDelta - 6.181, fieldHeight/2 - 4.221}
+			{37, fieldHeight/2 - 4.221}
 		};
 		double[][] PlasticBarrier12 = new double[][]{
-			//Bottom Right Barrier
+			//Bottom Left Barrier
 			{fieldLength - BaseLineDelta - 12.363, fieldHeight/2 - 3.001},
-			{fieldLength - BaseLineDelta - 11.598, fieldHeight/2 - 2.804}
+			{33.74, fieldHeight/2 - 2.804}
 		};
 		
 		//AirShips(Red Alliance)
