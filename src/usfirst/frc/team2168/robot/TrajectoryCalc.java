@@ -32,7 +32,7 @@ import java.util.List;
  * @date 2014-Aug-11
  *
  */
-public class FalconPathPlanner
+public class TrajectoryCalc
 {
 
 	//Path Variables
@@ -88,7 +88,7 @@ public class FalconPathPlanner
 		The units of these coordinates are position units assumed by the user (i.e inch, foot, meters) 
 	 * @param path
 	 */
-	public FalconPathPlanner(double[][] path)
+	public TrajectoryCalc(double[][] path)
 	{
 		this.origPath = doubleArrayCopy(path);
 
@@ -899,14 +899,14 @@ public class FalconPathPlanner
 		//AirShips(Red Alliance)
 		double[][] AirShip1 = new double[][]{
 			//{BaseLineDelta + 11.598, fieldHeight/2 + 0.917},
-			{16.7, fieldHeight/2 + 2.804},
-			{13.1, fieldHeight/2 + 4.221},
+			{16.5, fieldHeight/2 + 2.804},
+			{BaseLineDelta + 6.181, fieldHeight/2 + 4.221},
 			/*{BaseLineDelta + 1.765, fieldHeight/2 + 2.804},*/
 			{9.53, fieldHeight/2 + 2.804},
 			/*{BaseLineDelta + 1.765, fieldHeight/2 - 2.804},*/
 			{9.53, fieldHeight/2 - 2.804},
-			{13.1, fieldHeight/2 - 4.221},
-			{16.7, fieldHeight/2 - 2.804},
+			{BaseLineDelta + 6.181, fieldHeight/2 - 4.221},
+			{16.5, fieldHeight/2 - 2.804},
 			//{BaseLineDelta + 11.598, fieldHeight/2 - 0.917}
 			
 			
@@ -981,7 +981,7 @@ public class FalconPathPlanner
 		double timeStep = 0.1; //period of control loop on Rio, seconds
 		double robotTrackWidth = 2; //distance between left and right wheels, feet
 
-		final FalconPathPlanner path = new FalconPathPlanner(MyPath);
+		final TrajectoryCalc path = new TrajectoryCalc(MyPath);
 		path.calculate(totalTime, timeStep, robotTrackWidth);
 		
 		System.out.println("Time in ms: " + (System.currentTimeMillis()-start));
@@ -1006,9 +1006,9 @@ public class FalconPathPlanner
 		fig4.addData(path.smoothLeftVelocity, Color.cyan);
 
 		//Path heading accumulated in degrees
-		FalconPathPlanner.print(path.heading);
-		FalconPathPlanner.print(path.smoothLeftVelocity);
-		FalconPathPlanner.print(path.smoothRightVelocity);
+		TrajectoryCalc.print(path.heading);
+		TrajectoryCalc.print(path.smoothLeftVelocity);
+		TrajectoryCalc.print(path.smoothRightVelocity);
 		
 		
 	}
@@ -1076,7 +1076,7 @@ public class FalconPathPlanner
 		double timeStep = 0.1; //period of control loop on Rio, seconds
 		double robotTrackWidth = 2; //distance between left and right wheels, feet
 
-		final FalconPathPlanner path = new FalconPathPlanner(CheesyPath);
+		final TrajectoryCalc path = new TrajectoryCalc(CheesyPath);
 		path.calculate(totalTime, timeStep, robotTrackWidth);
 		
 		System.out.println("Time in ms: " + (System.currentTimeMillis()-start));
