@@ -778,23 +778,31 @@ public class FalconPathPlanner
 		
 		//Red Alliance Boiler Line
 		double[][] FieldBorder2 = new double[][] {
-			{0, 4.42},
-			{4.42, 0}
+			{0, 8.5},
+			{8.5, 0}
 		};
+		
+		
+		
+		// plz upload me on github.meme -Roshan
+		
+		
+		
+		
 		
 		//Blue Alliance Loading Station Line
 		double[][] FieldBorder3 = new double[][] {
-			{0, fieldHeight - 10.292},
+			{0, fieldHeight - 8.5},
 			{10.929, fieldHeight}
 		};
 		//Blue Alliance Boiler Line
 		double[][] FieldBorder4 = new double[][] {
-			{fieldLength - 4.42, 0},
-			{fieldLength, 4.42}
+			{fieldLength - 8.5, 0},
+			{fieldLength, 8.5}
 		};
 		//Red Alliance Loading Station Line
 		double[][] FieldBorder5 = new double[][] {
-			{fieldLength, fieldHeight - 10.929},
+			{fieldLength, 18.5},
 			{fieldLength - 10.929, fieldHeight}
 		};
 		
@@ -815,7 +823,7 @@ public class FalconPathPlanner
 	
 		
 		//Baseline 
-		double BaseLineDelta = 7.771;
+		double BaseLineDelta = 7.5  ;
 		double[][] BaseLine1 = new double[][]{
 			{BaseLineDelta, 0},
 			{BaseLineDelta, fieldHeight},
@@ -842,7 +850,7 @@ public class FalconPathPlanner
 			{9.53, fieldHeight/2 - 2.804}
 			
 		};
-		double[][] PlasticBarrier3 = new double[][]{
+		/*double[][] PlasticBarrier3 = new double[][]{
 			//Top Center Barrier
 			{BaseLineDelta + 6.181, fieldHeight/2 + 4.985},
 			{13.1, fieldHeight/2 + 4.221}
@@ -861,7 +869,7 @@ public class FalconPathPlanner
 			//Bottom Right Barrier
 			{BaseLineDelta + 12.363, fieldHeight/2 - 3.001},
 			{16.7, fieldHeight/2 - 2.804}
-		};
+		};*/
 		//Blue Alliance Station
 		double[][] PlasticBarrier7 = new double[][]{
 			//Right Most Top Barrier
@@ -875,7 +883,7 @@ public class FalconPathPlanner
 			{fieldLength - 9.53, fieldHeight/2 - 2.804}
 			
 		};
-		double[][] PlasticBarrier9 = new double[][]{
+		/*double[][] PlasticBarrier9 = new double[][]{
 			//Top Center Barrier
 			{fieldLength - BaseLineDelta - 6.181, fieldHeight/2 + 4.985},
 			{37, fieldHeight/2 + 4.221}
@@ -894,11 +902,12 @@ public class FalconPathPlanner
 			//Bottom Left Barrier
 			{fieldLength - BaseLineDelta - 12.363, fieldHeight/2 - 3.001},
 			{33.74, fieldHeight/2 - 2.804}
-		};
+		};*/
 		
 		//AirShips(Red Alliance)
 		double[][] AirShip1 = new double[][]{
 			//{BaseLineDelta + 11.598, fieldHeight/2 + 0.917},
+			{16.7, fieldHeight/2 + 1.833},
 			{16.7, fieldHeight/2 + 2.804},
 			{13.1, fieldHeight/2 + 4.221},
 			/*{BaseLineDelta + 1.765, fieldHeight/2 + 2.804},*/
@@ -907,6 +916,7 @@ public class FalconPathPlanner
 			{9.53, fieldHeight/2 - 2.804},
 			{13.1, fieldHeight/2 - 4.221},
 			{16.7, fieldHeight/2 - 2.804},
+			{16.7, fieldHeight/2 - 1.833},
 			//{BaseLineDelta + 11.598, fieldHeight/2 - 0.917}
 			
 			
@@ -914,6 +924,7 @@ public class FalconPathPlanner
 		
 		//Airships(Blue Alliance)
 		double[][] AirShip2 = new double[][]{
+			{33.74, fieldHeight/2 + 1.833},
 			{33.74, fieldHeight/2 + 2.804},
 			{37, fieldHeight/2 + 4.221},
 			/*{fieldLength - BaseLineDelta - 1.9,*/
@@ -922,6 +933,7 @@ public class FalconPathPlanner
 			{fieldLength - 9.53, fieldHeight/2 - 2.804},
 			{37, fieldHeight/2 - 4.221},
 			{33.74, fieldHeight/2 - 2.804},
+			{33.74, fieldHeight/2 - 1.833}
 			//{fieldLength - BaseLineDelta - 12.363, fieldHeight/2 - 0.917},
 			
 			
@@ -951,16 +963,16 @@ public class FalconPathPlanner
 		fig3.addData(BaseLine2, Color.blue);
 		fig3.addData(PlasticBarrier1, Color.red);
 		fig3.addData(PlasticBarrier2, Color.red);
-		fig3.addData(PlasticBarrier3, Color.red);
-		fig3.addData(PlasticBarrier4, Color.red);
-		fig3.addData(PlasticBarrier5, Color.red);
-		fig3.addData(PlasticBarrier6, Color.red);
+		//fig3.addData(PlasticBarrier3, Color.red);
+		//fig3.addData(PlasticBarrier4, Color.red);
+		//fig3.addData(PlasticBarrier5, Color.red);
+		//fig3.addData(PlasticBarrier6, Color.red);
 		fig3.addData(PlasticBarrier7, Color.blue);
 		fig3.addData(PlasticBarrier8, Color.blue);
-		fig3.addData(PlasticBarrier9, Color.blue);
-		fig3.addData(PlasticBarrier10, Color.blue);
-		fig3.addData(PlasticBarrier11, Color.blue);
-		fig3.addData(PlasticBarrier12, Color.blue);
+		//fig3.addData(PlasticBarrier9, Color.blue);
+		//fig3.addData(PlasticBarrier10, Color.blue);
+		//fig3.addData(PlasticBarrier11, Color.blue);
+		//fig3.addData(PlasticBarrier12, Color.blue);
 		fig3.addData(AirShip1, Color.red);
 		fig3.addData(AirShip2, Color.blue);
 		fig3.addData(NuetralZone1, Color.red);
