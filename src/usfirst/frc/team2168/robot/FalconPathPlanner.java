@@ -815,6 +815,11 @@ public class FalconPathPlanner
 			{fieldLength, 18.5},
 			{fieldLength - 10.929, fieldHeight}
 		};
+		//Top border line of the field
+		double[][] FieldBorder6 = new double[][] {
+			{0, fieldHeight},
+			{fieldLength, fieldHeight}
+		};
 		
 		
 
@@ -963,10 +968,10 @@ public class FalconPathPlanner
 		};
 
 		fig3.addData(FieldBorder1, Color.black);
-		fig3.addData(FieldBorder2, Color.black);
-		fig3.addData(FieldBorder3, Color.black);
-		fig3.addData(FieldBorder4, Color.black);
-		fig3.addData(FieldBorder5, Color.black);/*
+		fig3.addData(FieldBorder2, Color.red);
+		fig3.addData(FieldBorder3, Color.blue);
+		fig3.addData(FieldBorder4, Color.blue);
+		fig3.addData(FieldBorder5, Color.red);/*
 		fig3.addData(KeyLine, Color.black);
 		fig3.addData(RetrievalZone, Color.black);*/
 		fig3.addData(BaseLine1, Color.red);
@@ -982,7 +987,7 @@ public class FalconPathPlanner
 		//fig3.addData(PlasticBarrier9, Color.blue);
 		//fig3.addData(PlasticBarrier10, Color.blue);
 		//fig3.addData(PlasticBarrier11, Color.blue);
-		//fig3.addData(PlasticBarrier12, Color.blue);
+		fig3.addData(FieldBorder6, Color.black);
 		fig3.addData(AirShip1, Color.red);
 		fig3.addData(AirShip2, Color.blue);
 		fig3.addData(NuetralZone1, Color.red);
@@ -990,8 +995,8 @@ public class FalconPathPlanner
 
 		//This is where you put in the coordinates of where you want the robot to move.
 		//It is from this that the program will derive the optimum trajectory.
-		double[][] MyPath = new double[][]{
-			{7,16},
+		double[][] MyPath = new double[][]{//Trajectory points you want the robot to go-to {x,y}
+			{7,16},//In feet
 			{11,16},
 			{17,28},
 			{23,28},
