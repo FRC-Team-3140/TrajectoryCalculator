@@ -123,6 +123,16 @@ public class FalconPathPlanner
 		for(double[] u: path)
 			System.out.println(u[0]+ "\t" +u[1]);
 	}
+	/**
+	 * Prints Cartesian Coordinates to the System Output as Column Vectors in the Form X	Y
+	 * Corrected for starting position //To Be used for getting absolute displacement not field oriented
+	 * @param path
+	 */
+	public static void printPosition(double[][] path, double[][] trajectory) {
+		System.out.println("X: \t Y:");
+		for(double[] u: path)
+			System.out.println((u[0]- trajectory[0][0]) + "\t" + (u[1]-trajectory[0][1]));
+	}
 
 	/**
 	 * Performs a deep copy of a 2 Dimensional Array looping thorough each element in the 2D array
@@ -981,17 +991,17 @@ public class FalconPathPlanner
 		//This is where you put in the coordinates of where you want the robot to move.
 		//It is from this that the program will derive the optimum trajectory.
 		double[][] MyPath = new double[][]{
-			{1,1},
-			{49,1},
-			{49, 26},
-			{1, 26}
+			{7,16},
+			{11,16},
+			{17,28},
+			{23,28},
 		};
 
 		long start = System.currentTimeMillis();
 
-		double totalTime = 5; //seconds
+		double totalTime = 6; //seconds
 		double timeStep = 0.1; //period of control loop on Rio, seconds
-		double robotTrackWidth = 2; //distance between left and right wheels, feet
+		double robotTrackWidth = 2.1875; //distance between left and right wheels, feet
 
 		final FalconPathPlanner path = new FalconPathPlanner(MyPath);
 		path.calculate(totalTime, timeStep, robotTrackWidth);
@@ -1021,7 +1031,8 @@ public class FalconPathPlanner
 		FalconPathPlanner.print(path.heading);
 		FalconPathPlanner.print(path.smoothLeftVelocity);
 		FalconPathPlanner.print(path.smoothRightVelocity);
-		
+		FalconPathPlanner.printPosition(path.leftPath, MyPath);//Corrected from field oriented to absolute
+		FalconPathPlanner.printPosition(path.rightPath, MyPath);//Corrected from field oriented to absolute
 		
 	}
 
