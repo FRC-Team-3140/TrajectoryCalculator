@@ -966,7 +966,32 @@ public class FalconPathPlanner
 			{fieldLength - NuetralZoneDelta, fieldHeight}
 			
 		};
+		
+		double[][] Boundary1 = new double[][]{
+			//left boiler
+			{3,0},
+			{0,3},
+			
+		};
 
+		double[][] Boundary2 = new double[][]{
+			//right boiler
+			{50,3},
+			{47,0},
+			
+		};
+		
+		double[][] Boundary3 = new double[][]{
+			//right loading station
+			{50,27-3.13},
+			{50-6.08,27}
+		};
+		double[][] Boundary4 = new double[][]{
+			//left loading station
+			{0+6.08,27},
+			{0,27-3.13}
+		};
+		
 		fig3.addData(FieldBorder1, Color.black);
 		fig3.addData(FieldBorder2, Color.red);
 		fig3.addData(FieldBorder3, Color.blue);
@@ -992,14 +1017,17 @@ public class FalconPathPlanner
 		fig3.addData(AirShip2, Color.blue);
 		fig3.addData(NuetralZone1, Color.red);
 		fig3.addData(NuetralZone2, Color.blue);
-
+		fig3.addData(Boundary1, Color.black);
+		fig3.addData(Boundary2, Color.black);
+		fig3.addData(Boundary3, Color.black);
+		fig3.addData(Boundary4, Color.black);
+		
 		//This is where you put in the coordinates of where you want the robot to move.
 		//It is from this that the program will derive the optimum trajectory.
 		double[][] MyPath = new double[][]{//Trajectory points you want the robot to go-to {x,y}
-			{7,16},//In feet
-			{11,16},
-			{17,28},
-			{23,28},
+			{0,20.62},//4 or so points that I'm going to measure by walking on the field-Roshan
+			{13,23},
+			{13,17.5}
 		};
 
 		long start = System.currentTimeMillis();
