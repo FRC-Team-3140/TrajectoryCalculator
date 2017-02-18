@@ -921,17 +921,17 @@ public class FalconPathPlanner
 		
 		//AirShips(Red Alliance)
 		double[][] AirShip1 = new double[][]{
-			//{BaseLineDelta + 11.598, fieldHeight/2 + 0.917},
-			{16.7, fieldHeight/2 + 1.833},
-			{16.7, fieldHeight/2 + 2.804},
-			{13.1, fieldHeight/2 + 4.221},
+			//{BaseLineDelta + 11.598, fieldHeight/2 + 0.917},15.17
+			//{16.7, fieldHeight/2 + 1.833},
+			{15, 15.17},
+			{12.5, 16.92},
 			/*{BaseLineDelta + 1.765, fieldHeight/2 + 2.804},*/
-			{9.53, fieldHeight/2 + 2.804},
+			{9+6.5/12, 15.17},
 			/*{BaseLineDelta + 1.765, fieldHeight/2 - 2.804},*/
-			{9.53, fieldHeight/2 - 2.804},
-			{13.1, fieldHeight/2 - 4.221},
-			{16.7, fieldHeight/2 - 2.804},
-			{16.7, fieldHeight/2 - 1.833},
+			{9+6.5/12, 11.83},
+			{12.5, 10.08},
+			{15, 11.83},
+			//{16.7, fieldHeight/2 - 1.833},
 			//{BaseLineDelta + 11.598, fieldHeight/2 - 0.917}
 			
 			
@@ -1024,17 +1024,17 @@ public class FalconPathPlanner
 		
 		//This is where you put in the coordinates of where you want the robot to move.
 		//It is from this that the program will derive the optimum trajectory.
-		/*double[][] MyPath = new double[][]{//Trajectory points you want the robot to go-to {x,y}
+		double[][] MyPath = new double[][]{//Trajectory points you want the robot to go-to {x,y}
 			{0,27-3.13-1-3.5/12}, //top left to gear
 			{9,23},
 			{(9.5+13)/2,(17.6+16.3)/2},
-		};*/
+		};
 		
-double[][] MyPath = new double[][]{//Trajectory points you want the robot to go-to {x,y}
+		/*double[][] MyPath = new double[][]{//Trajectory points you want the robot to go-to {x,y}
 		{0,4},//left to gear
 		{10,4},
-		{(13+9.6)/2,(9.2+10.6)/2},
-	};  
+		{(13+9.6)/2,(9.2+10.6)/2}, 
+	};  */
 	
 		/*double[][] MyPath = new double[][]{//Trajectory points you want the robot to go-to {x,y}
 			{0,13.5},//middle to gear
