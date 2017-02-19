@@ -856,13 +856,13 @@ public class FalconPathPlanner
 		double[][] PlasticBarrier1 = new double[][]{
 			//Left Most Top Barrier
 			{BaseLineDelta, fieldHeight/2 + 3.001},
-			{9.53, fieldHeight/2 + 2.804}
+			{9.53, 15.1}
 			
 		};
 		double[][] PlasticBarrier2 = new double[][]{
 			//Left Most Bottom Barrier
-			{BaseLineDelta, fieldHeight/2 - 3.001},
-			{9.53, fieldHeight/2 - 2.804}
+			{7.5, 10.5},
+			{9.5, 11.9}
 			
 		};
 		/*double[][] PlasticBarrier3 = new double[][]{
@@ -888,14 +888,13 @@ public class FalconPathPlanner
 		//Blue Alliance Station
 		double[][] PlasticBarrier7 = new double[][]{
 			//Right Most Top Barrier
-			{fieldLength - BaseLineDelta, fieldHeight/2 + 3.001},
-			{fieldLength - 9.53,fieldHeight/2 + 2.804}
-			
+			{50-BaseLineDelta, fieldHeight/2 + 3.001},
+			{50-9.53, 15.1}
 		};
 		double[][] PlasticBarrier8 = new double[][]{
 			//Right Most Bottom Barrier
-			{fieldLength - BaseLineDelta, fieldHeight/2 - 3.001},
-			{fieldLength - 9.53, fieldHeight/2 - 2.804}
+			{50-7.5, 10.5},
+			{50-9.5, 11.9}
 			
 		};
 		/*double[][] PlasticBarrier9 = new double[][]{
@@ -939,18 +938,17 @@ public class FalconPathPlanner
 		
 		//Airships(Blue Alliance)
 		double[][] AirShip2 = new double[][]{
-			{33.74, fieldHeight/2 + 1.833},
-			{33.74, fieldHeight/2 + 2.804},
-			{37, fieldHeight/2 + 4.221},
+			//{50-15, 15.7},
+			{50-15, 15.17},
+			{50-12.5, 16.92},
 			/*{fieldLength - BaseLineDelta - 1.9,*/
-			{fieldLength - 9.53,fieldHeight/2 + 2.804},
+			{40.46,15.17},
 			/*{fieldLength - BaseLineDelta - 1.9,*/
-			{fieldLength - 9.53, fieldHeight/2 - 2.804},
-			{37, fieldHeight/2 - 4.221},
-			{33.74, fieldHeight/2 - 2.804},
-			{33.74, fieldHeight/2 - 1.833}
+			{40.46, 11.83},
+			{50-12.5, 10.08},
+			{35, 11.83},
+			//{33.74, fieldHeight/2 - 1.833}
 			//{fieldLength - BaseLineDelta - 12.363, fieldHeight/2 - 0.917},
-			//THIS IS ALL INNACURATE
 			
 		};
 		
