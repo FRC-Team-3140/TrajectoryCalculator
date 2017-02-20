@@ -1023,19 +1023,19 @@ public class FalconPathPlanner
 		//This is where you put in the coordinates of where you want the robot to move.
 		//It is from this that the program will derive the optimum trajectory.
 		/*double[][] MyPath = new double[][]{//Trajectory points you want the robot to go-to {x,y}
-			{0,27-3.13-1-3.5/12}, //top left to gear
+			{0+3.5/12,27-3.13-1-3.5/12}, //top left to gear
 			{7,22.6},
 			{(9.5+12.4)/2,(16.9+15.2)/2+.25},
 		};*/
 		
 		double[][] MyPath = new double[][]{//Trajectory points you want the robot to go-to {x,y}
-		{0,4.2},//left to gear
+		{0+3.5/12,4.2},//left to gear
 		{7,4.2},
 		{(12.3+9.5)/2,(10.08+11.7)/2-.25}, 
 	};  
 	
 		/*double[][] MyPath = new double[][]{//Trajectory points you want the robot to go-to {x,y}
-			{0,13.5},//middle to gear
+			{0+3.5/12,13.5},//middle to gear
 			{9.5-.25,(10.7+16.3)/2}
 		}; */
 	
