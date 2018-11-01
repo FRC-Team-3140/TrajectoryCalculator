@@ -32,7 +32,7 @@ import java.util.List;
  * @date 2014-Aug-11
  *
  */
-public class FalconPathPlanner
+public class FalconPathPlanner implements Constants
 {
 
 	//Path Variables
@@ -752,10 +752,123 @@ public class FalconPathPlanner
 		//System.out.println(path.numFinalPoints);
 		//System.out.println(path.pathAlpha);
 
-		steamWorksExample();
+		powerUpExample();
 
 
 	}
+	
+	public static void powerUpExample() {
+		
+		double[][] upperBound = {
+			{0, FIELD_HEIGHT_FT},
+			{FIELD_LENGTH_FT, FIELD_HEIGHT_FT}
+		};
+		
+		double[][] powerCube1 = new double[][] {
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT, FIELD_HEIGHT_FT/2.0 - SWITCH_HEIGHT_FT/2},
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT, FIELD_HEIGHT_FT/2.0 - SWITCH_HEIGHT_FT/2 + POWER_CUBE_WIDTH_FT},
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT + POWER_CUBE_WIDTH_FT, FIELD_HEIGHT_FT/2.0 - SWITCH_HEIGHT_FT/2 + POWER_CUBE_WIDTH_FT},
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT + POWER_CUBE_WIDTH_FT, FIELD_HEIGHT_FT/2.0 - SWITCH_HEIGHT_FT/2},
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT, FIELD_HEIGHT_FT/2.0 - SWITCH_HEIGHT_FT/2}
+		};
+		
+		double[][] powerCube2 = new double[][] {
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT, FIELD_HEIGHT_FT/2.0 + SWITCH_HEIGHT_FT/2},
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT, FIELD_HEIGHT_FT/2.0 +SWITCH_HEIGHT_FT/2 - POWER_CUBE_WIDTH_FT},
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT + POWER_CUBE_WIDTH_FT, FIELD_HEIGHT_FT/2.0+ SWITCH_HEIGHT_FT/2 - POWER_CUBE_WIDTH_FT},
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT + POWER_CUBE_WIDTH_FT, FIELD_HEIGHT_FT/2.0 + SWITCH_HEIGHT_FT/2},
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT, FIELD_HEIGHT_FT/2.0 + SWITCH_HEIGHT_FT/2},
+		};
+		
+		double[][] blueSwitch = new double[][] {
+			{DELTAX_SWITCH_FT, FIELD_HEIGHT_FT/2.0 - SWITCH_HEIGHT_FT/2.0},
+			{DELTAX_SWITCH_FT, FIELD_HEIGHT_FT/2.0 + SWITCH_HEIGHT_FT/2.0},
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT, FIELD_HEIGHT_FT/2.0 + SWITCH_HEIGHT_FT/2},
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT, FIELD_HEIGHT_FT/2.0 - SWITCH_HEIGHT_FT/2},
+			{DELTAX_SWITCH_FT, FIELD_HEIGHT_FT/2 - SWITCH_HEIGHT_FT/2},
+			{DELTAX_SWITCH_FT, FIELD_HEIGHT_FT/2 - SWITCH_HEIGHT_FT/2 + SWITCH_PLATE_HEIGHT_FT},
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT, FIELD_HEIGHT_FT/2 - SWITCH_HEIGHT_FT/2 + SWITCH_PLATE_HEIGHT_FT},
+			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT, FIELD_HEIGHT_FT/2 + SWITCH_HEIGHT_FT/2 - SWITCH_PLATE_HEIGHT_FT},
+			{DELTAX_SWITCH_FT, FIELD_HEIGHT_FT/2 + SWITCH_HEIGHT_FT/2 - SWITCH_PLATE_HEIGHT_FT}
+		};
+		
+		double[][] scaleArm = {
+			{},
+			{}
+		};
+		
+		double[][] blueRamp = new double[][] {
+			{DELTAX_SCALE_PLATE_FT, FIELD_HEIGHT_FT/2 + RAMP_HEIGHT_FT/2},
+			{DELTAX_RAMP_FT, FIELD_HEIGHT_FT/2 + RAMP_HEIGHT_FT/2},
+			{DELTAX_RAMP_FT, FIELD_HEIGHT_FT/2 - RAMP_HEIGHT_FT/2},
+			{DELTAX_SCALE_PLATE_FT, FIELD_HEIGHT_FT/2 - RAMP_HEIGHT_FT/2},
+		};
+
+		double[][] topScalePlate = {
+		};
+
+		double[][] redRamp = {
+			{FIELD_LENGTH_FT- DELTAX_SCALE_PLATE_FT, FIELD_HEIGHT_FT/2 + RAMP_HEIGHT_FT/2},
+			{FIELD_LENGTH_FT-DELTAX_RAMP_FT, FIELD_HEIGHT_FT/2 + RAMP_HEIGHT_FT/2},
+			{FIELD_LENGTH_FT-DELTAX_RAMP_FT, FIELD_HEIGHT_FT/2 - RAMP_HEIGHT_FT/2},
+			{FIELD_LENGTH_FT-DELTAX_SCALE_PLATE_FT, FIELD_HEIGHT_FT/2 - RAMP_HEIGHT_FT/2},
+		};
+		
+		FalconLinePlot fig3 = new FalconLinePlot(new double[][]{{0.0,0.0}});
+		fig3.yGridOn();
+		fig3.xGridOn();
+		fig3.setYLabel("Y (feet)");
+		fig3.setXLabel("X (feet)");
+		fig3.setTitle("Top Down View of FRC Field \n Shows global position of robot path, along with" +
+					" left and right wheel trajectories.\n Includes field elements.");
+
+		//Display Field Dimensions
+		fig3.setXTic(0, FIELD_LENGTH_FT, 1);//Field Length
+		fig3.setYTic(0, 27, 1);//Field Height
+
+		fig3.addData(upperBound, Color.black);
+		fig3.addData(powerCube1, Color.yellow);
+		fig3.addData(powerCube2, Color.yellow);
+		fig3.addData(blueSwitch, Color.black);
+		fig3.addData(blueRamp, Color.blue);
+		fig3.addData(redRamp, Color.red);
+		
+		double[][] MyPath = new double[][]{//Trajectory points you want the robot to go-to {x,y}
+			{ 39 / 12, 4.5 }, // left to gear
+			{ 7, 4.5 }, 
+			{ (12.3 + 9.5) / 2, (10.08 + 11.7) / 2 - .25 }
+		};
+
+//		final FalconPathPlanner path = new FalconPathPlanner(MyPath);
+//		path.calculate(TOTAL_TIME, DT, TRACK_WIDTH_FT);
+
+		// Way point path
+//		fig3.addData(path.nodeOnlyPath, Color.blue, Color.green);
+//
+		// Add all other paths
+//		fig3.addData(path.smoothPath, Color.red, Color.blue);
+//		fig3.addData(path.leftPath, Color.magenta);
+//		fig3.addData(path.rightPath, Color.magenta);
+
+		// Velocity
+		/*FalconLinePlot fig4 = new FalconLinePlot(path.smoothCenterVelocity, null, Color.blue);
+		fig4.yGridOn();
+		fig4.xGridOn();
+		fig4.setYLabel("Velocity (ft/sec)");
+		fig4.setXLabel("time (seconds)");
+		fig4.setTitle("Velocity Profile for Left and Right Wheels \n Left = Cyan, Right = Magenta");
+		fig4.addData(path.smoothRightVelocity, Color.magenta);
+		fig4.addData(path.smoothLeftVelocity, Color.cyan);*/
+
+		// Path heading accumulated in degrees
+//		FalconPathPlanner.print(path.heading);
+//		FalconPathPlanner.print(path.smoothLeftVelocity);
+//		FalconPathPlanner.print(path.smoothRightVelocity);
+//		FalconPathPlanner.printPosition(path.leftPath, MyPath);// Corrected from field oriented to absolute
+//		FalconPathPlanner.printPosition(path.rightPath, MyPath);// Corrected from field oriented to absolute
+		
+	}
+	
 	public static void steamWorksExample() {
 		/***SteamWorks Example***/
 
@@ -1079,7 +1192,7 @@ public class FalconPathPlanner
 		
 	}
 
-	public void poofExample()
+	public static void poofExample()
 	{
 		/***Poof Example***/
 
