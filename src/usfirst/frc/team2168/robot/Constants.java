@@ -11,8 +11,14 @@ public interface Constants {
 	public final double DELTAX_SWITCH_FT = 140 / 12.0;
 	public final double SWITCH_LENGTH_FT = 4 + 8/12.0;
 	public final double SWITCH_HEIGHT_FT = 12 + 9.5/12;
-	public final double SWITCH_PLATE_HEIGHT_FT = 3 + 4.5/12;
+	public final double POWER_CUBE_ZONE_WIDTH_FT = 40/12.0;
+	public final double POWER_CUBE_ZONE_HEIGHT_FT = 41/12.0;
 	
+	public final double VAULT_LENGTH_FT =3;
+	public final double VAULT_HEIGHT_FT = 4;
+	public final double DELTAY_MIDLINE_VAULT_FT = 1;
+	
+	public final double SWITCH_PLATE_HEIGHT_FT = 3 + 4.5/12;
 	public final double DELTAX_SCALE_PLATE_FT = 299.65/12;
 	public final double DELTAY_SCALE_PLATE_FT = 71.57/12;
 	public final double SCALE_PLATE_HEIGHT_FT = 3;
