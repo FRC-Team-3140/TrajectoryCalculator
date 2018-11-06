@@ -764,6 +764,11 @@ public class FalconPathPlanner implements Constants
 			{FIELD_LENGTH_FT, FIELD_HEIGHT_FT}
 		};
 		
+		double[][] rightBound = {
+			{FIELD_LENGTH_FT, 0},
+			{FIELD_LENGTH_FT, FIELD_HEIGHT_FT}
+		};
+		
 		double[][] powerCube1 = new double[][] {
 			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT, FIELD_HEIGHT_FT/2.0 - SWITCH_HEIGHT_FT/2},
 			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT, FIELD_HEIGHT_FT/2.0 - SWITCH_HEIGHT_FT/2 + POWER_CUBE_WIDTH_FT},
@@ -847,6 +852,28 @@ public class FalconPathPlanner implements Constants
 			{FIELD_LENGTH_FT-DELTAX_SCALE_PLATE_FT, FIELD_HEIGHT_FT/2 - RAMP_HEIGHT_FT/2},
 		};
 		
+		double[][] powerCubeZoneBlue = {
+			{DELTAX_SWITCH_FT, FIELD_HEIGHT_FT/2 - POWER_CUBE_ZONE_HEIGHT_FT/2},
+			{DELTAX_SWITCH_FT - POWER_CUBE_ZONE_WIDTH_FT, FIELD_HEIGHT_FT/2 - POWER_CUBE_ZONE_HEIGHT_FT/2},
+			{DELTAX_SWITCH_FT - POWER_CUBE_ZONE_WIDTH_FT, FIELD_HEIGHT_FT/2 + POWER_CUBE_ZONE_HEIGHT_FT/2},
+			{DELTAX_SWITCH_FT, FIELD_HEIGHT_FT/2 + POWER_CUBE_ZONE_HEIGHT_FT/2}
+		};
+		
+		double[][] powerCubeZoneCube = {
+			{DELTAX_SWITCH_FT - POWER_CUBE_ZONE_WIDTH_FT, FIELD_HEIGHT_FT/2 - POWER_CUBE_WIDTH_FT/2},
+			{DELTAX_SWITCH_FT - POWER_CUBE_ZONE_WIDTH_FT, FIELD_HEIGHT_FT/2 + POWER_CUBE_WIDTH_FT/2},
+			{DELTAX_SWITCH_FT - POWER_CUBE_ZONE_WIDTH_FT+ POWER_CUBE_WIDTH_FT, FIELD_HEIGHT_FT/2 + POWER_CUBE_WIDTH_FT/2},
+			{DELTAX_SWITCH_FT - POWER_CUBE_ZONE_WIDTH_FT+ POWER_CUBE_WIDTH_FT, FIELD_HEIGHT_FT/2 - POWER_CUBE_WIDTH_FT/2},
+			{DELTAX_SWITCH_FT - POWER_CUBE_ZONE_WIDTH_FT, FIELD_HEIGHT_FT/2 - POWER_CUBE_WIDTH_FT/2}
+		};
+		
+		double[][] vaultBlue = {
+			{0, FIELD_HEIGHT_FT/2 +DELTAY_MIDLINE_VAULT_FT},
+			{VAULT_LENGTH_FT, FIELD_HEIGHT_FT/2 +DELTAY_MIDLINE_VAULT_FT},
+			{VAULT_LENGTH_FT, FIELD_HEIGHT_FT/2 +DELTAY_MIDLINE_VAULT_FT+VAULT_HEIGHT_FT},
+			{0, FIELD_HEIGHT_FT/2 +DELTAY_MIDLINE_VAULT_FT+VAULT_HEIGHT_FT},
+		};
+		
 		FalconLinePlot fig3 = new FalconLinePlot(new double[][]{{0.0,0.0}});
 		fig3.yGridOn();
 		fig3.xGridOn();
@@ -865,12 +892,16 @@ public class FalconPathPlanner implements Constants
 		fig3.addData(topRightPortal, Color.black);
 		fig3.addData(bottomLeftPortal, Color.black);
 		fig3.addData(topLeftPortal, Color.black);
+		fig3.addData(rightBound, Color.black);
 		fig3.addData(upperBound, Color.black);
 		fig3.addData(powerCube1, Color.yellow);
 		fig3.addData(powerCube2, Color.yellow);
 		fig3.addData(blueSwitch, Color.black);
 		fig3.addData(blueRamp, Color.blue);
 		fig3.addData(redRamp, Color.red);
+		fig3.addData(powerCubeZoneCube, Color.yellow);
+		fig3.addData(powerCubeZoneBlue, Color.blue);
+		fig3.addData(vaultBlue, Color.blue);
 		
 		double[][] MyPath = new double[][]{//Trajectory points you want the robot to go-to {x,y}
 			{ DELTAX_START_FT, DELTAY_RIGHT_START_FT }, 
