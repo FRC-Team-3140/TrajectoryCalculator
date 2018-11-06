@@ -791,6 +791,42 @@ public class FalconPathPlanner implements Constants
 			{DELTAX_SWITCH_FT + SWITCH_LENGTH_FT, FIELD_HEIGHT_FT/2 + SWITCH_HEIGHT_FT/2 - SWITCH_PLATE_HEIGHT_FT},
 			{DELTAX_SWITCH_FT, FIELD_HEIGHT_FT/2 + SWITCH_HEIGHT_FT/2 - SWITCH_PLATE_HEIGHT_FT}
 		};
+
+		double[][] topLeftPortal = new double[][] {
+			{0, FIELD_HEIGHT_FT - PORTAL_Y_FT},
+			{PORTAL_X_FT, FIELD_HEIGHT_FT}
+		};
+		
+		double[][] bottomLeftPortal = new double[][] {
+			{0, PORTAL_Y_FT},
+			{PORTAL_X_FT, 0}
+		};
+		
+		double[][] bottomRightPortal = new double[][] {
+			{FIELD_LENGTH_FT - PORTAL_X_FT, 0},
+			{FIELD_LENGTH_FT, PORTAL_Y_FT}
+		};
+		
+		double[][] topRightPortal = new double[][] {
+			{FIELD_LENGTH_FT - PORTAL_X_FT, FIELD_HEIGHT_FT},
+			{FIELD_LENGTH_FT, FIELD_HEIGHT_FT - PORTAL_Y_FT}
+		};
+		
+		double[][] scalePlateBottom = new double[][] {
+			{DELTAX_SCALE_PLATE_FT, DELTAY_SCALE_PLATE_FT},
+			{DELTAX_SCALE_PLATE_FT, DELTAY_SCALE_PLATE_FT + SCALE_PLATE_HEIGHT_FT},
+			{FIELD_LENGTH_FT - DELTAX_SCALE_PLATE_FT, DELTAY_SCALE_PLATE_FT + SCALE_PLATE_HEIGHT_FT},
+			{FIELD_LENGTH_FT - DELTAX_SCALE_PLATE_FT, DELTAY_SCALE_PLATE_FT},
+			{DELTAX_SCALE_PLATE_FT, DELTAY_SCALE_PLATE_FT},
+		};
+		
+		double[][] scalePlateTop = new double[][] {
+			{DELTAX_SCALE_PLATE_FT, FIELD_HEIGHT_FT-DELTAY_SCALE_PLATE_FT},
+			{DELTAX_SCALE_PLATE_FT, FIELD_HEIGHT_FT -DELTAY_SCALE_PLATE_FT - SCALE_PLATE_HEIGHT_FT},
+			{FIELD_LENGTH_FT - DELTAX_SCALE_PLATE_FT, FIELD_HEIGHT_FT - DELTAY_SCALE_PLATE_FT - SCALE_PLATE_HEIGHT_FT},
+			{FIELD_LENGTH_FT - DELTAX_SCALE_PLATE_FT, FIELD_HEIGHT_FT- DELTAY_SCALE_PLATE_FT},
+			{DELTAX_SCALE_PLATE_FT, FIELD_HEIGHT_FT-DELTAY_SCALE_PLATE_FT},
+		};
 		
 		double[][] scaleArm = {
 			{},
@@ -802,9 +838,6 @@ public class FalconPathPlanner implements Constants
 			{DELTAX_RAMP_FT, FIELD_HEIGHT_FT/2 + RAMP_HEIGHT_FT/2},
 			{DELTAX_RAMP_FT, FIELD_HEIGHT_FT/2 - RAMP_HEIGHT_FT/2},
 			{DELTAX_SCALE_PLATE_FT, FIELD_HEIGHT_FT/2 - RAMP_HEIGHT_FT/2},
-		};
-
-		double[][] topScalePlate = {
 		};
 
 		double[][] redRamp = {
@@ -826,6 +859,12 @@ public class FalconPathPlanner implements Constants
 		fig3.setXTic(0, FIELD_LENGTH_FT, 1);//Field Length
 		fig3.setYTic(0, 27, 1);//Field Height
 
+		fig3.addData(scalePlateBottom, Color.black);
+		fig3.addData(scalePlateTop, Color.black);
+		fig3.addData(bottomRightPortal, Color.black);
+		fig3.addData(topRightPortal, Color.black);
+		fig3.addData(bottomLeftPortal, Color.black);
+		fig3.addData(topLeftPortal, Color.black);
 		fig3.addData(upperBound, Color.black);
 		fig3.addData(powerCube1, Color.yellow);
 		fig3.addData(powerCube2, Color.yellow);
@@ -834,38 +873,44 @@ public class FalconPathPlanner implements Constants
 		fig3.addData(redRamp, Color.red);
 		
 		double[][] MyPath = new double[][]{//Trajectory points you want the robot to go-to {x,y}
-			{ 39 / 12, 4.5 }, // left to gear
-			{ 7, 4.5 }, 
-			{ (12.3 + 9.5) / 2, (10.08 + 11.7) / 2 - .25 }
+			{ DELTAX_START_FT, DELTAY_RIGHT_START_FT }, 
+			{ 21, DELTAY_RIGHT_START_FT }, 
+			{ 25, 6 }
 		};
 
-//		final FalconPathPlanner path = new FalconPathPlanner(MyPath);
-//		path.calculate(TOTAL_TIME, DT, TRACK_WIDTH_FT);
+		final FalconPathPlanner path = new FalconPathPlanner(MyPath);
+		path.calculate(TOTAL_TIME, DT, TRACK_WIDTH_FT);
 
 		// Way point path
-//		fig3.addData(path.nodeOnlyPath, Color.blue, Color.green);
-//
+		fig3.addData(path.nodeOnlyPath, Color.blue, Color.green);
+
 		// Add all other paths
-//		fig3.addData(path.smoothPath, Color.red, Color.blue);
-//		fig3.addData(path.leftPath, Color.magenta);
-//		fig3.addData(path.rightPath, Color.magenta);
+		fig3.addData(path.smoothPath, Color.red, Color.blue);
+		fig3.addData(path.leftPath, Color.magenta);
+		fig3.addData(path.rightPath, Color.magenta);
 
 		// Velocity
-		/*FalconLinePlot fig4 = new FalconLinePlot(path.smoothCenterVelocity, null, Color.blue);
+		FalconLinePlot fig4 = new FalconLinePlot(path.smoothCenterVelocity, null, Color.blue);
 		fig4.yGridOn();
 		fig4.xGridOn();
 		fig4.setYLabel("Velocity (ft/sec)");
 		fig4.setXLabel("time (seconds)");
 		fig4.setTitle("Velocity Profile for Left and Right Wheels \n Left = Cyan, Right = Magenta");
 		fig4.addData(path.smoothRightVelocity, Color.magenta);
-		fig4.addData(path.smoothLeftVelocity, Color.cyan);*/
+		fig4.addData(path.smoothLeftVelocity, Color.cyan);
 
-		// Path heading accumulated in degrees
-//		FalconPathPlanner.print(path.heading);
-//		FalconPathPlanner.print(path.smoothLeftVelocity);
-//		FalconPathPlanner.print(path.smoothRightVelocity);
-//		FalconPathPlanner.printPosition(path.leftPath, MyPath);// Corrected from field oriented to absolute
-//		FalconPathPlanner.printPosition(path.rightPath, MyPath);// Corrected from field oriented to absolute
+		System.out.println("H");
+		// [time][heading in degrees]
+		FalconPathPlanner.print(path.heading);
+		// [time][velocity]
+		System.out.println("VL");
+		FalconPathPlanner.print(path.smoothLeftVelocity);
+		System.out.println("VR");
+		FalconPathPlanner.print(path.smoothRightVelocity);
+		System.out.println("PL");
+		FalconPathPlanner.printPosition(path.leftPath, MyPath);// Corrected from field oriented to absolute
+		System.out.println("PR");
+		FalconPathPlanner.printPosition(path.rightPath, MyPath);// Corrected from field oriented to absolute
 		
 	}
 	

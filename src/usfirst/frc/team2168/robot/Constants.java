@@ -45,7 +45,7 @@ public interface Constants {
 	/*
 	 * OTHER
 	 */
-	public final double DT = 0.05;
+	public final double DT = 0.05; // seconds
 	public final double TOTAL_TIME = 6.5;
 
 
