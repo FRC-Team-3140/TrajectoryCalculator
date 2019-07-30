@@ -113,14 +113,14 @@ class FalconLinePlot extends JPanel implements ClipboardOwner{
     	this(getXVector(data),getYVector(data),Color.red,null);
     }
     
-/**
- * Constructor which plots charts based on provided x and y axis data in a single two dimensional array.
- * @param data is a 2D array of doubles of size Nx2 or 2xN. The plot assumes X is the first dimension, and y data
- * is the second dimension.
- * @param lineColor is the color the user wishes to be displayed for the line connecting each datapoint
- * @param markerColor is the color the user which to be used for the data point. Make this null if the user wishes to
- * not have datapoint markers.
- */
+    /**
+     * Constructor which plots charts based on provided x and y axis data in a single two dimensional array.
+     * @param data is a 2D array of doubles of size Nx2 or 2xN. The plot assumes X is the first dimension, and y data
+     * is the second dimension.
+     * @param lineColor is the color the user wishes to be displayed for the line connecting each datapoint
+     * @param markerColor is the color the user which to be used for the data point. Make this null if the user wishes to
+     * not have datapoint markers.
+     */
     public FalconLinePlot(double[][] data, Color lineColor, Color markerColor)
     {
     	this(getXVector(data),getYVector(data),lineColor,markerColor);
@@ -137,8 +137,6 @@ class FalconLinePlot extends JPanel implements ClipboardOwner{
     {
     	this(xData,yData,lineColor,null);
     }
-    
-
     
     /**
      * Constructor which plots charts based on provided x and y axis data, provided as separate arrays. The user 
