@@ -35,8 +35,8 @@ import java.util.List;
 public class FalconPathPlanner implements Constants, Drawings {
 
 	//Path Variables
-	public double[][] origPath;
-	public double[][] nodeOnlyPath;
+	public double[][] origPath; // The original path that came from the constructor
+	public double[][] nodeOnlyPath; // Control points. Show up as green
 	public double[][] smoothPath;
 	public double[][] leftPath;
 	public double[][] rightPath;
@@ -86,7 +86,7 @@ public class FalconPathPlanner implements Constants, Drawings {
 		The units of these coordinates are position units assumed by the user (i.e inch, foot, meters) 
 	 * @param path
 	 */
-	public FalconPathPlanner(double[][] path) {
+	public FalconPathPlanner(double[][] path, double totalTime, double timeStep, double robotTrackWidth) {
 		this.origPath = doubleArrayCopy(path);
 
 		//default values DO NOT MODIFY;
@@ -97,6 +97,8 @@ public class FalconPathPlanner implements Constants, Drawings {
 		velocityAlpha = 0.1;
 		velocityBeta = 0.3;
 		velocityTolerance = 0.0000001;
+		
+		calculate(totalTime, timeStep, robotTrackWidth);
 	}
 
 	public static void print(double[] path)
@@ -134,7 +136,7 @@ public class FalconPathPlanner implements Constants, Drawings {
 	 * 
 	 * BigO: Order N x M
 	 * @param arr
-	 * @return
+	 * @return another array with the same contents as arr
 	 */
 	public static double[][] doubleArrayCopy(double[][] arr) {
 
@@ -157,6 +159,7 @@ public class FalconPathPlanner implements Constants, Drawings {
 
 	/**
 	 * Method upsamples the Path by linear injection. The result providing more waypoints along the path.
+	 * (wtf does this do)
 	 * 
 	 * BigO: Order N * injection#
 	 * 
@@ -205,6 +208,7 @@ public class FalconPathPlanner implements Constants, Drawings {
 	 * Optimization algorithm, which optimizes the data points in path to create a smooth trajectory.
 	 * This optimization uses gradient descent. While unlikely, it is possible for this algorithm to never
 	 * converge. If this happens, try increasing the tolerance level.
+	 * (im rly lost)
 	 * 
 	 * BigO: N^x, where X is the number of of times the while loop iterates before tolerance is met. 
 	 * 
@@ -240,6 +244,9 @@ public class FalconPathPlanner implements Constants, Drawings {
 	/**
 	 * reduces the path into only nodes which change direction. This allows the algorithm to know at what points
 	 * the original WayPoint vector changes. 
+	 * 
+	 * (The points returned from this method look like the control points the path. They are green in the
+	 * final picture)
 	 * 
 	 * BigO: Order N + Order M, Where N is length of original Path, and M is length of Nodes found in Path
 	 * @param path
@@ -590,21 +597,6 @@ public class FalconPathPlanner implements Constants, Drawings {
 		return temp;		
 	}
 
-	public void setPathAlpha(double alpha)
-	{
-		pathAlpha = alpha;
-	}
-
-	public void setPathBeta(double beta)
-	{
-		pathAlpha = beta;
-	}
-
-	public void setPathTolerance(double tolerance)
-	{
-		pathAlpha = tolerance;
-	}
-
 	/**
 	 * This code will calculate a smooth path based on the program parameters. If the user doesn't set any parameters, the will use the defaults optimized for most cases. The results will be saved into the corresponding
 	 * class members. The user can then access .smoothPath, .leftPath, .rightPath, .smoothCenterVelocity, .smoothRightVelocity, .smoothLeftVelocity as needed.
@@ -620,13 +612,12 @@ public class FalconPathPlanner implements Constants, Drawings {
 		/**
 		 * pseudo code
 		 * 
-		 * 1. Reduce input waypoints to only essential (direction changing) node points
+		 * 1. Reduce input waypoints to only essential (direction changing) node points (these are control points)
 		 * 2. Calculate how many total datapoints we need to satisfy the controller for "playback"
 		 * 3. Simultaneously inject and smooth the path until we end up with a smooth path with required number 
 		 *    of datapoints, and which follows the waypoint path.
 		 * 4. Calculate left and right wheel paths by calculating parallel points at each datapoint 
 		 */
-
 
 		//First find only direction changing nodes
 		nodeOnlyPath = nodeOnlyWayPoints(origPath);
