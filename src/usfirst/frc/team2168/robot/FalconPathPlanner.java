@@ -32,8 +32,7 @@ import java.util.List;
  * @date 2014-Aug-11
  *
  */
-public class FalconPathPlanner implements Constants, Drawings
-{
+public class FalconPathPlanner implements Constants, Drawings {
 
 	//Path Variables
 	public double[][] origPath;
@@ -67,7 +66,6 @@ public class FalconPathPlanner implements Constants, Drawings
 	double velocityBeta;
 	double velocityTolerance;
 
-
 	/**
 	 * Constructor, takes a Path of Way Points defined as a double array of column vectors representing the global
 	 * cartesian points of the path in {x,y} coordinates. The waypoint are traveled from one point to the next in sequence.
@@ -88,8 +86,7 @@ public class FalconPathPlanner implements Constants, Drawings
 		The units of these coordinates are position units assumed by the user (i.e inch, foot, meters) 
 	 * @param path
 	 */
-	public FalconPathPlanner(double[][] path)
-	{
+	public FalconPathPlanner(double[][] path) {
 		this.origPath = doubleArrayCopy(path);
 
 		//default values DO NOT MODIFY;
@@ -114,8 +111,7 @@ public class FalconPathPlanner implements Constants, Drawings
 	 * Prints Cartesian Coordinates to the System Output as Column Vectors in the Form X	Y
 	 * @param path
 	 */
-	public static void print(double[][] path)
-	{
+	public static void print(double[][] path) {
 		System.out.println("X: \t Y:");
 
 		for(double[] u: path)
@@ -140,8 +136,7 @@ public class FalconPathPlanner implements Constants, Drawings
 	 * @param arr
 	 * @return
 	 */
-	public static double[][] doubleArrayCopy(double[][] arr)
-	{
+	public static double[][] doubleArrayCopy(double[][] arr) {
 
 		//size first dimension of array
 		double[][] temp = new double[arr.length][arr[0].length];
@@ -169,8 +164,7 @@ public class FalconPathPlanner implements Constants, Drawings
 	 * @param numToInject
 	 * @return
 	 */
-	public double[][] inject(double[][] orig, int numToInject)
-	{
+	public double[][] inject(double[][] orig, int numToInject) {
 		double morePoints[][];
 
 		//create extended 2 Dimensional array to hold additional points

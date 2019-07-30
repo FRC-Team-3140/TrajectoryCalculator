@@ -24,7 +24,7 @@ import javax.swing.*;
  * 
  * This is by all means not an extensive plotter, but it will help visualize data very quickly and accurately. If
  * a more robust plotting function is required, the user is encouraged to use Excel or Matlab. The purpose of this
- * class is to be easy to use with enought automation to have nice graphs with minimal effort, but give the user
+ * class is to be easy to use with enough automation to have nice graphs with minimal effort, but give the user
  * control over as much as possible, so they can generate the perfect chart.
  * 
  * The plotter also features the ability to capture screen shots directly from the right-click menu, this allows
@@ -32,7 +32,7 @@ import javax.swing.*;
  * 
  * This class holds an interface similar to that of Matlab. 
  * 
- * This class currently only supports scatterd line charts.
+ * This class currently only supports scattered line charts.
  * 
  * @author Kevin Harrilal
  * @email kevin@team2168.org
@@ -153,14 +153,14 @@ class FalconLinePlot extends JPanel implements ClipboardOwner{
     	yLabel = "Y axis";
     	titleLabel = "Title";
     	
-       upperXtic = -Double.MAX_VALUE;
-       lowerXtic = Double.MAX_VALUE;
-       upperYtic = -Double.MAX_VALUE;
-       lowerYtic = Double.MAX_VALUE;
-       xticCount = -Integer.MAX_VALUE;
+    	upperXtic = -Double.MAX_VALUE;
+    	lowerXtic = Double.MAX_VALUE;
+	    upperYtic = -Double.MAX_VALUE;
+	    lowerYtic = Double.MAX_VALUE;
+	    xticCount = -Integer.MAX_VALUE;
        
-       this.userSetXTic = false;
-       this.userSetYTic = false;
+	    this.userSetXTic = false;
+	    this.userSetYTic = false;
     	
     	link = new LinkedList<xyNode>();
     	
@@ -181,8 +181,7 @@ class FalconLinePlot extends JPanel implements ClipboardOwner{
      * Adds a plot to an existing figure.  
      * @param yData is a array of doubles representing the Y-axis values of the data to be plotted.
      * @param color is the color the user wishes to be displayed for the line connecting each datapoint
-     */
-    
+     */   
     public void addData(double[] y, Color lineColor)
     {
     	addData(y, lineColor, null);
@@ -726,6 +725,7 @@ class FalconLinePlot extends JPanel implements ClipboardOwner{
     }
 	
     /****Methods to Support Right Click Menu****/
+    // i dont think the copy thing works .-.
     @Override
 	public void lostOwnership(Clipboard    clip, Transferable transferable) 
 	{
